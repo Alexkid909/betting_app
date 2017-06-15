@@ -11,13 +11,47 @@
 	<div class="header">
 		<h1>Bet Now</h1>
 	</div>
-	<h2>Available Bets</h2>
-	<div ng-controller="BetController">
+	<div class="slip" ng-controller="SlipController">
+		<form name="bettingSlip" ng-submit="bettingSlip.$valid && placeBets(slip)" novalidate>
+			<h2>Your Betting Slip</h2>
+			<div ng-repeat="bet in slip">
+				<div class="form-group">
+					<p>
+						<span>
+							{{bet.name}}
+						</span>
+						<span> 
+							{{bet.odds.numerator}}/{{bet.odds.denominator}}
+						</span>
+						<span>
+							<label for="stake" form="bettingSlip">Stake</label>
+							<input type="number" name="stake" placeholder="Enter your stake" class="form-control" ng-model="bet.stake" required>
+						</span>
+						<span>
+							Return {{bet.stake == null ? 0 : (bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake;}}
+						</span>
+					</p>	
+				</div>
+			</div>
+			<span>
+				<input class="btn" type="submit" value="Place Bets" class="form-control">
+			</span>
+		</form>
+	</div>
+	<div class="bets" ng-controller="BetController">
+		<h2>Available Bets</h2>
 		<div ng-repeat="event in events">
 			<p>Win {{event.name}}</p>
 			<div ng-repeat="bet in event.bets">		
-				<p>{{bet.name}} {{bet.odds.numerator}}/{{bet.odds.denominator}}</p>
-				<button>bet</button>
+				<p>
+					<span>
+						{{bet.name}}
+					</span>
+					<span> 
+						{{bet.odds.numerator}}/{{bet.odds.denominator}}
+					</span>
+					<button ng-click="addBet(bet)">bet</button>
+				</p>	
 			</div>
 		</div>
 	</div>
@@ -27,10 +61,11 @@
 	<script type="text/javascript" src="js/app.js"></script>
 
 	<!-- Controllers -->
-
 	<script type="text/javascript" src="js/controllers/BetController.js"></script>
+	<script type="text/javascript" src="js/controllers/SlipController.js"></script>	
 
 	<!-- Services -->
 	<script type="text/javascript" src="js/services/markets.js"></script>
+	<script type="text/javascript" src="js/services/slip.js"></script>
 </body>
 </html>
