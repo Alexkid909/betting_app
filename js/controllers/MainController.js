@@ -1,6 +1,7 @@
 app.controller('MainController',[
+		'$scope',
 		'markets',
-		function(markets) {
+		function($scope,markets) {
 			var confirmApiResponse = function() {
 				var counter = 0;
 				var apiResponseCheck = setInterval(function() {
@@ -21,5 +22,10 @@ app.controller('MainController',[
 				},10);
 			};
 			confirmApiResponse();
+
+			$scope.bets = markets.data;
+
+
+
 		}
 	]);
