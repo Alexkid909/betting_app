@@ -4,6 +4,7 @@
 	<title>Bet Now!</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="js/vendor/angular.js"></script>
+	<script src="js/vendor/angular-route.min.js"></script>	
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 </head>
 <body ng-app="BetNow">
@@ -11,49 +12,7 @@
 	<div class="header">
 		<h1>Bet Now</h1>
 	</div>
-	<div class="slip" ng-controller="SlipController">
-		<form name="bettingSlip" ng-submit="bettingSlip.$valid && placeBets(slip)" novalidate>
-			<h2>Your Betting Slip</h2>
-			<div ng-repeat="bet in slip">
-				<div class="form-group">
-					<p>
-						<span>
-							{{bet.name}}
-						</span>
-						<span> 
-							{{bet.odds.numerator}}/{{bet.odds.denominator}}
-						</span>
-						<span>
-							<label for="stake" form="bettingSlip">Stake</label>
-							<input type="number" name="stake" placeholder="Enter your stake" class="form-control" ng-model="bet.stake" required>
-						</span>
-						<span>
-							Return {{bet.stake == null ? 0 : (bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake;}}
-						</span>
-					</p>	
-				</div>
-			</div>
-			<span>
-				<input class="btn" type="submit" value="Place Bets" class="form-control">
-			</span>
-		</form>
-	</div>
-	<div class="bets" ng-controller="BetController">
-		<h2>Available Bets</h2>
-		<div ng-repeat="event in events">
-			<p>Win {{event.name}}</p>
-			<div ng-repeat="bet in event.bets">		
-				<p>
-					<span>
-						{{bet.name}}
-					</span>
-					<span> 
-						{{bet.odds.numerator}}/{{bet.odds.denominator}}
-					</span>
-					<button ng-click="addBet(bet)">bet</button>
-				</p>	
-			</div>
-		</div>
+	<div class="main" ng-view>
 	</div>
 
 
@@ -67,5 +26,10 @@
 	<!-- Services -->
 	<script type="text/javascript" src="js/services/markets.js"></script>
 	<script type="text/javascript" src="js/services/slip.js"></script>
+	<script type="text/javascript" src="js/services/bets.js"></script>
+	<script type="text/javascript" src="js/services/apiResponses.js"></script>
+
+	<!-- Directives -->
+	<script type="text/javascript" src="js/directives/bet.js"></script>
 </body>
 </html>

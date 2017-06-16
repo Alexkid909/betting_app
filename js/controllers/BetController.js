@@ -1,9 +1,11 @@
 app.controller('BetController',['$scope',
 		'markets',
 		'slip',
-		function($scope,markets,slip) {
+		'apiResponses',
+		function($scope,markets,slip,apiResponses) {
 			$scope.events = [];
 			$scope.slip = slip;
+			$scope.responses = apiResponses;			
 			$scope.events = markets.then(function(success) {
 				var events = [];
 				for (var key in success) {
@@ -42,6 +44,11 @@ app.controller('BetController',['$scope',
 					events[eventKey].bets.push(bet);
 				};
 				$scope.events = events;
+			}).then(function(error) {
+				if (error) {
+					$scope.responses.push(error);
+					console.log('Error placing bet: ',error);
+				};
 			});
 			$scope.addBet = function(bet) {
 				bet.stake = null;

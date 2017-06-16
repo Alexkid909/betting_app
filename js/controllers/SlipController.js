@@ -1,25 +1,30 @@
 app.controller('SlipController',['$scope',
 	'$http',
 	'slip',
-	function($scope,$http,slip) {
+	'bets',
+	'apiResponses',
+	function($scope,$http,slip,bets,apiResponses) {
 		$scope.slip = slip;
+		$scope.placedBets = bets;
+		$scope.responses = apiResponses;
 		$scope.placeBets = function(slip) {
-			var slipLine = slip[0]
+			slip.forEach(function(slipLine) {
 				var bet = {
 					bet_id: slipLine.id,
 					odds: slipLine.odds,
 					stake: slipLine.stake
 				};
-				console.log(bet);
-				debugger;
 				$http.post('https://bedefetechtest.herokuapp.com/v1/bets',bet)
 				.then(function(success) {
-			// slip.forEach(function(slipLine) {
-			// 		debugger;
-			// 	});
-			// });
-					debugger;
+					$scope.placedBets.push(success.data);
+					console.log('Placed Bets: ',$scope.placedBets);
+				}).then(function(error) {
+					if(error) {
+						$scope.responses.push(error);
+						console.log('Error placing bet: ',error);				
+					};
 				});
-			};
-		}
+			});
+		};
+	}
 ]);
