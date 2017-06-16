@@ -1,0 +1,12 @@
+<div class="bets" ng-controller="BetController">
+	<h2>Available Bets</h2>
+	<div ng-repeat="event in events">
+		<p>Win {{event.name}}</p>
+		<div ng-repeat="bet in event.bets">		
+			<p>
+				<bet></bet>
+				<button ng-click="addBet(bet)">bet</button>
+			</p>	
+		</div>
+	</div>
+</div>
