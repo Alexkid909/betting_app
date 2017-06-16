@@ -1,11 +1,11 @@
 app.controller('SlipController',['$scope',
 	'$http',
 	'slip',
-	'bets',
+	'placedBets',
 	'apiResponses',
-	function($scope,$http,slip,bets,apiResponses) {
+	function($scope,$http,slip,placedBets,apiResponses) {
 		$scope.slip = slip;
-		$scope.placedBets = bets;
+		$scope.placedBets = placedBets;
 		$scope.responses = apiResponses;
 		$scope.placeBets = function(slip) {
 			slip.forEach(function(slipLine) {

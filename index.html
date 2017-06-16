@@ -10,7 +10,12 @@
 <body ng-app="BetNow">
 	
 	<div class="header">
-		<h1>Bet Now</h1>
+		<h1>
+			<a href="#/">			
+				Bet Now
+			</a>
+		</h1>
+		<a href="#/placed-bets">Placed Bets</a>
 	</div>
 	<div class="main" ng-view>
 	</div>
@@ -22,11 +27,12 @@
 	<!-- Controllers -->
 	<script type="text/javascript" src="js/controllers/BetController.js"></script>
 	<script type="text/javascript" src="js/controllers/SlipController.js"></script>	
+	<script type="text/javascript" src="js/controllers/PlacedBetsController.js"></script>	
 
 	<!-- Services -->
 	<script type="text/javascript" src="js/services/markets.js"></script>
 	<script type="text/javascript" src="js/services/slip.js"></script>
-	<script type="text/javascript" src="js/services/bets.js"></script>
+	<script type="text/javascript" src="js/services/placedBets.js"></script>
 	<script type="text/javascript" src="js/services/apiResponses.js"></script>
 
 	<!-- Directives -->
