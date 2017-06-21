@@ -104,25 +104,22 @@ div.main available-bets {
     div.main available-bets .bet-wrapper span.bet-odds {
       color: #ffe700;
       margin-left: 5vw; }
-div.main slip {
-  position: fixed;
-  bottom: 0;
+div.main slip, div.main .placed-bets {
   width: 100%;
-  background: linear-gradient(0deg, #413f3f, #808080);
-  transform: translateY(calc(100% - var(--slipHeaderHeight))); }
-  div.main slip.slip-wrapper h2.slip-header {
+  background: linear-gradient(0deg, #413f3f, #808080); }
+  div.main slip.slip-wrapper h2.slip-header, div.main .placed-bets.slip-wrapper h2.slip-header {
     font-size: 1.5rem;
     display: inline-block;
     margin: 0 0 0 3.5vw; }
-    div.main slip.slip-wrapper h2.slip-header .glyphicon-chevron-down {
+    div.main slip.slip-wrapper h2.slip-header .glyphicon-chevron-down, div.main .placed-bets.slip-wrapper h2.slip-header .glyphicon-chevron-down {
       display: none; }
-    div.main slip.slip-wrapper h2.slip-header .glyphicon-chevron-up {
+    div.main slip.slip-wrapper h2.slip-header .glyphicon-chevron-up, div.main .placed-bets.slip-wrapper h2.slip-header .glyphicon-chevron-up {
       display: initial; }
-  div.main slip .slip-header-section {
+  div.main slip .slip-header-section, div.main .placed-bets .slip-header-section {
     padding-top: 3.5vw;
     padding-bottom: 3vw;
     border-bottom: 1px solid #aaaaaa; }
-    div.main slip .slip-header-section .bet-counter {
+    div.main slip .slip-header-section .bet-counter, div.main .placed-bets .slip-header-section .bet-counter {
       border-radius: 100%;
       background-color: #ffe700;
       display: inline-block;
@@ -136,50 +133,48 @@ div.main slip {
       border: 3px solid white;
       padding-top: 0.5vw;
       margin-top: 1vw; }
-  div.main slip .slip-line-wrapper {
+  div.main slip .slip-line-wrapper, div.main slip .placed-bet-wrapper, div.main .placed-bets .slip-line-wrapper, div.main .placed-bets .placed-bet-wrapper {
     padding: 2vw 3.5vw 1.5vw 3.5vw;
     border-bottom: 1px solid #aaaaaa; }
-  div.main slip .form-group {
+  div.main slip .form-group, div.main slip .placed-bet-wrapper, div.main .placed-bets .form-group, div.main .placed-bets .placed-bet-wrapper {
     margin: 0; }
-    div.main slip .form-group .event-name {
-      display: block;
-      font-size: 0.65rem; }
-    div.main slip .form-group span.bet-odds {
-      float: right; }
-    div.main slip .form-group .bet-wrapper {
-      padding: 0; }
-    div.main slip .form-group .bet-name-group, div.main slip .form-group .bet-stake-group {
-      padding: 0; }
-    div.main slip .form-group .bet-name-group {
-      padding-right: 2vw;
-      padding-top: 1vw; }
-    div.main slip .form-group .return {
-      font-size: 0.65rem;
-      float: right;
-      margin-right: 1vw; }
-    div.main slip .form-group input.stake {
-      color: #fff;
-      height: auto;
-      font-size: 0.9rem;
-      border-radius: 0;
-      background-color: #938f8f;
-      border-color: #484848; }
-      div.main slip .form-group input.stake::placeholder {
-        color: #fff; }
-  div.main slip.active {
+  div.main slip .event-name, div.main slip .trans-id, div.main .placed-bets .event-name, div.main .placed-bets .trans-id {
+    display: block;
+    font-size: 0.65rem; }
+  div.main slip span.bet-odds, div.main .placed-bets span.bet-odds {
+    float: right; }
+  div.main slip .bet-wrapper, div.main .placed-bets .bet-wrapper {
+    padding: 0; }
+  div.main slip .bet-name-group, div.main slip .bet-stake-group, div.main slip .bet-trans-id-group, div.main .placed-bets .bet-name-group, div.main .placed-bets .bet-stake-group, div.main .placed-bets .bet-trans-id-group {
+    padding: 0;
+    padding-right: 2vw; }
+  div.main slip .return, div.main .placed-bets .return {
+    font-size: 0.65rem;
+    float: right;
+    margin-right: 1vw; }
+  div.main slip input.stake, div.main .placed-bets input.stake {
+    color: #fff;
+    height: auto;
+    font-size: 0.9rem;
+    border-radius: 0;
+    background-color: #938f8f;
+    border-color: #484848; }
+    div.main slip input.stake::placeholder, div.main .placed-bets input.stake::placeholder {
+      color: #fff; }
+  div.main slip.active, div.main .placed-bets.active {
     transform: translateY(0);
     transition: all ease-in 300ms; }
-    div.main slip.active h2.slip-header .glyphicon-chevron-down {
+    div.main slip.active h2.slip-header .glyphicon-chevron-down, div.main .placed-bets.active h2.slip-header .glyphicon-chevron-down {
       display: initial; }
-    div.main slip.active h2.slip-header .glyphicon-chevron-up {
+    div.main slip.active h2.slip-header .glyphicon-chevron-up, div.main .placed-bets.active h2.slip-header .glyphicon-chevron-up {
       display: none; }
-  div.main slip:not(.active) {
+  div.main slip:not(.active), div.main .placed-bets:not(.active) {
     transition: all ease-in 300ms; }
-  div.main slip input.ng-touched.ng-invalid {
+  div.main slip input.ng-touched.ng-invalid, div.main .placed-bets input.ng-touched.ng-invalid {
     border: 1px solid red; }
-  div.main slip input.ng-dirty.ng-valid {
+  div.main slip input.ng-dirty.ng-valid, div.main .placed-bets input.ng-dirty.ng-valid {
     border: 1px solid green; }
-  div.main slip input.btn.place-bets {
+  div.main slip input.btn.place-bets, div.main .placed-bets input.btn.place-bets {
     display: block;
     position: relative;
     margin: 2.5vw auto;
@@ -189,5 +184,21 @@ div.main slip {
     color: #006600;
     border-radius: 0;
     font-weight: 900; }
+div.main slip {
+  position: fixed;
+  bottom: 0;
+  transform: translateY(calc(100% - var(--slipHeaderHeight))); }
+  div.main slip .bet-name-group {
+    padding-right: 2vw;
+    padding-top: 1vw; }
+div.main .placed-bets .bet-trans-id-group {
+  text-align: center; }
+  div.main .placed-bets .bet-trans-id-group span {
+    display: block;
+    margin: 0 auto; }
+div.main .placed-bets span.bet-odds {
+  float: none; }
+div.main .placed-bets span.stake {
+  float: right; }
 
 /*# sourceMappingURL=style.css.map */

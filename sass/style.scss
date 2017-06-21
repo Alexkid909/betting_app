@@ -140,11 +140,6 @@ div.main {
 			background: linear-gradient(176deg,#002200,#008800);
 			font-size: 1.2rem;
 		}
-		div.event-wrapper {
-			// span {
-			// 	font-size: 1.5rem;
-			// }
-		}
 
 		.bet-wrapper {
 			background: linear-gradient(176deg,rgb(20, 20, 20),rgb(80,80,80));
@@ -158,12 +153,9 @@ div.main {
 		}
 	}
 
-	slip {
-		position: fixed;
-		bottom: 0;
+	slip, .placed-bets {
 		width: 100%;
 		background: linear-gradient(0deg,#413f3f,#808080);
-		transform: translateY(calc(100% - var(--slipHeaderHeight)));	 		
 
 
 		&.slip-wrapper {
@@ -201,45 +193,42 @@ div.main {
 			}
 		}
 
-		.slip-line-wrapper {
+		.slip-line-wrapper, .placed-bet-wrapper {
 			padding: 2vw 3.5vw 1.5vw 3.5vw;
 			border-bottom: 1px solid #aaaaaa;
 		}
-		.form-group {
-			margin: 0;
-			.event-name {
-				display: block;
-				font-size: 0.65rem;
-			}
-			span.bet-odds {
-				float: right;
-			}
-			.bet-wrapper {
-				padding: 0;
-			}
-			.bet-name-group, .bet-stake-group {
-				padding: 0;
-			}
 
-			.bet-name-group {
-				padding-right: 2vw;
-				padding-top: 1vw;
-			}
-			.return {
-				font-size: 0.65rem;
-				float: right;
-				margin-right: 1vw;
-			}
-			input.stake {
+		.form-group, .placed-bet-wrapper {
+			margin: 0;
+		}
+		.event-name, .trans-id {
+			display: block;
+			font-size: 0.65rem;
+		}
+		span.bet-odds {
+			float: right;
+		}
+		.bet-wrapper {
+			padding: 0;
+		}		
+		.bet-name-group, .bet-stake-group, .bet-trans-id-group {
+			padding: 0;
+			padding-right: 2vw;
+		}
+		.return {
+			font-size: 0.65rem;
+			float: right;
+			margin-right: 1vw;
+		}
+		input.stake {
+			color: #fff;
+			height: auto;
+			font-size: 0.9rem;
+			border-radius: 0;
+			background-color: #938f8f;
+			border-color:#484848;
+			&::placeholder {
 				color: #fff;
-				height: auto;
-				font-size: 0.9rem;
-				border-radius: 0;
-				background-color: #938f8f;
-				border-color:#484848;
-				&::placeholder {
-					color: #fff;
-				}
 			}
 		}
 
@@ -281,5 +270,32 @@ div.main {
 		}
 		
 	}
+
+
+	slip {
+		position: fixed;
+		bottom: 0;
+		transform: translateY(calc(100% - var(--slipHeaderHeight)));	 		
+		.bet-name-group {
+			padding-right: 2vw;
+			padding-top: 1vw;
+		}
+	}
+
+	.placed-bets {
+		.bet-trans-id-group {
+			text-align: center;
+			span {
+				display: block;
+				margin: 0 auto;
+			}
+		}
+		span.bet-odds {
+			float: none;
+		}
+		span.stake {
+			float: right;
+		}
+	}	
 
 }
