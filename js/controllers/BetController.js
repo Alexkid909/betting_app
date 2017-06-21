@@ -2,10 +2,16 @@ app.controller('BetController',['$scope',
 		'markets',
 		'slip',
 		'apiResponses',
-		function($scope,markets,slip,apiResponses) {
+		'$rootScope',
+		function($scope,markets,slip,apiResponses,$rootScope) {
 			$scope.events = [];
 			$scope.slip = slip;
-			$scope.responses = apiResponses;			
+			$scope.responses = apiResponses;
+			$rootScope.counter = 0;
+			$rootScope.deactivateLoader = function() {
+				const loaderBackdrop = document.querySelector('div.loader-backdrop');
+				loaderBackdrop.classList.remove('active');
+			};			
 			$scope.events = markets.then(function(success) {
 				var events = [];
 				for (var key in success) {
@@ -49,8 +55,11 @@ app.controller('BetController',['$scope',
 					$scope.responses.push(error);
 					console.log('Error placing bet: ',error);
 				};
+			}).then(function() {
+				$rootScope.deactivateLoader();
 			});
-			$scope.addBet = function(bet) {
+			$scope.addBet = function(event,bet,callback) {
+				bet.event = event;
 				bet.stake = null;
 				bet.return = (bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake;
 				$scope.slip.push(bet);

@@ -1,7 +1,6 @@
-<div ng-repeat="event in events">
 	<div ng-repeat="bet in events">		
-		<span>{{bet.event}}</span>	
 		<bet></bet>
+		<span>{{bet.event}}</span>	
 		<span>Stake {{bet.stake}}</span>
 		<span>
 			Return {{bet.stake == null ? 0 : (bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake;}}
@@ -10,4 +9,3 @@
 			Transaction ID: {{bet.transaction_id}}
 		</span>
 	</div>
-</div>

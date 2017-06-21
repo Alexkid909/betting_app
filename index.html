@@ -2,22 +2,27 @@
 <html>
 <head>
 	<title>Bet Now!</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="js/vendor/angular.js"></script>
 	<script src="js/vendor/angular-route.min.js"></script>	
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 </head>
 <body ng-app="BetNow">
-	
-	<div class="header">
-		<h1>
-			<a href="#/">			
-				Bet Now
-			</a>
-		</h1>
-		<a href="#/placed-bets">Placed Bets</a>
+	<div class="loader-backdrop active">	
+		<div class="loader-container">
+			<div class="loader"></div>	
+		</div>
 	</div>
-	<div class="main" ng-view>
+	<div class="section header">
+		<div class="container">		
+			<a class="placed-bets" href="#/placed-bets">My Bets</a>
+			<a href="#/">			
+					<img class="bet-now-logo" src="img/bet-now-logo.png">
+			</a>
+		</div>
+	</div>
+	<div class="section main" ng-view>
 	</div>
 
 

@@ -1,11 +1,193 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Raleway");
+html {
+  font-size: 5vw; }
+
+:root {
+  --slipHeaderHeight: 0px; }
+
 body {
-	font-size: 10vw;
-}
+  position: relative;
+  color: #fff;
+  border-right: 2px solid #969696;
+  min-height: 100vh;
+  background-color: #c8c8c8; }
 
-.slip input.ng-touched.ng-invalid {
-	border: 1px solid red;
-}
+h1, h2, h3, h4, h5, p, a, input, span {
+  font-family: 'Raleway',sans-serif;
+  color: inherit; }
 
-.slip input.ng-dirty.ng-valid {
-	border: 1px solid green;
-}
+p, span, a, input, .btn {
+  font-size: 1rem; }
+
+.btn {
+  padding: 3vw 4vw; }
+
+h1 {
+  font-size: 3rem; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+.loader-backdrop {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  opacity: 0; }
+  .loader-backdrop.active {
+    opacity: 1;
+    z-index: 2; }
+    .loader-backdrop.active .loader-container {
+      opacity: 1;
+      z-index: 3; }
+
+.loader-container {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  opacity: 0; }
+
+.loader {
+  border: 8px solid #f3f3f3;
+  /* Light grey */
+  border-top: 8px solid #3498db;
+  /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite; }
+
+.section .container {
+  padding: 1vw 2vw; }
+.section.header {
+  background: linear-gradient(176deg, black, #787878, #1e1e1e); }
+  .section.header .bet-now-logo {
+    width: 65%;
+    margin-bottom: 0.5rem; }
+  .section.header .placed-bets {
+    font-size: 0.8rem;
+    font-weight: 900; }
+
+.col-sm-6 {
+  padding-left: 0;
+  padding-right: 0; }
+
+div.header a {
+  position: relative;
+  display: inline-block; }
+  div.header a.placed-bets {
+    float: right; }
+
+div.main div.event, div.main .bet-wrapper {
+  display: block;
+  padding-right: 2.5vw;
+  padding-left: 3.5vw;
+  padding-top: 5vw;
+  padding-bottom: 3vw; }
+div.main .bet-wrapper span {
+  font-size: 1rem; }
+div.main .bet-wrapper span.bet-odds {
+  color: #ffe700; }
+div.main available-bets {
+  min-height: 100vh; }
+  div.main available-bets .event {
+    color: inherit;
+    background: linear-gradient(176deg, #002200, #008800);
+    font-size: 1.2rem; }
+  div.main available-bets .bet-wrapper {
+    background: linear-gradient(176deg, #141414, #505050); }
+    div.main available-bets .bet-wrapper span {
+      display: inline-block; }
+    div.main available-bets .bet-wrapper span.bet-odds {
+      color: #ffe700;
+      margin-left: 5vw; }
+div.main slip {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(0deg, #413f3f, #808080);
+  transform: translateY(calc(100% - var(--slipHeaderHeight))); }
+  div.main slip.slip-wrapper h2.slip-header {
+    font-size: 1.5rem;
+    display: inline-block;
+    margin: 0 0 0 3.5vw; }
+    div.main slip.slip-wrapper h2.slip-header .glyphicon-chevron-down {
+      display: none; }
+    div.main slip.slip-wrapper h2.slip-header .glyphicon-chevron-up {
+      display: initial; }
+  div.main slip .slip-header-section {
+    padding-top: 3.5vw;
+    padding-bottom: 3vw;
+    border-bottom: 1px solid #aaaaaa; }
+    div.main slip .slip-header-section .bet-counter {
+      border-radius: 100%;
+      background-color: #ffe700;
+      display: inline-block;
+      min-width: 7.5vw;
+      min-height: 7.5vw;
+      vertical-align: text-top;
+      text-align: center;
+      color: #008800;
+      font-size: 0.8rem;
+      font-weight: 900;
+      border: 3px solid white;
+      padding-top: 0.5vw;
+      margin-top: 1vw; }
+  div.main slip .slip-line-wrapper {
+    padding: 2vw 3.5vw 1.5vw 3.5vw;
+    border-bottom: 1px solid #aaaaaa; }
+  div.main slip .form-group {
+    margin: 0; }
+    div.main slip .form-group .event-name {
+      display: block;
+      font-size: 0.65rem; }
+    div.main slip .form-group span.bet-odds {
+      float: right; }
+    div.main slip .form-group .bet-wrapper {
+      padding: 0; }
+    div.main slip .form-group .bet-name-group, div.main slip .form-group .bet-stake-group {
+      padding: 0; }
+    div.main slip .form-group .bet-name-group {
+      padding-right: 2vw;
+      padding-top: 1vw; }
+    div.main slip .form-group .return {
+      font-size: 0.65rem;
+      float: right;
+      margin-right: 1vw; }
+    div.main slip .form-group input.stake {
+      color: #fff;
+      height: auto;
+      font-size: 0.9rem;
+      border-radius: 0;
+      background-color: #938f8f;
+      border-color: #484848; }
+      div.main slip .form-group input.stake::placeholder {
+        color: #fff; }
+  div.main slip.active {
+    transform: translateY(0);
+    transition: all ease-in 300ms; }
+    div.main slip.active h2.slip-header .glyphicon-chevron-down {
+      display: initial; }
+    div.main slip.active h2.slip-header .glyphicon-chevron-up {
+      display: none; }
+  div.main slip:not(.active) {
+    transition: all ease-in 300ms; }
+  div.main slip input.ng-touched.ng-invalid {
+    border: 1px solid red; }
+  div.main slip input.ng-dirty.ng-valid {
+    border: 1px solid green; }
+  div.main slip input.btn.place-bets {
+    display: block;
+    position: relative;
+    margin: 2.5vw auto;
+    width: 90%;
+    border: none;
+    background-color: #ffe700;
+    color: #006600;
+    border-radius: 0;
+    font-weight: 900; }
+
+/*# sourceMappingURL=style.css.map */
