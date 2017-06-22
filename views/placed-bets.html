@@ -11,7 +11,7 @@
 		<div class="bet-stake-group col-xs-4">
 			<span class="stake">Stake {{bet.stake}}</span>
 			<span class="return">
-				Return {{bet.stake == null ? 0 : (bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake;}}
+				Return {{(bet.stake == null ? 0 : (bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake) | currency:"£"}}
 			</span>
 		</div>
 	</div>

@@ -8,10 +8,20 @@ app.controller('BetController',['$scope',
 			$scope.slip = slip;
 			$scope.responses = apiResponses;
 			$rootScope.counter = 0;
+			$rootScope.deactivateBackdrop = function(callback) {
+				const backdrop = document.querySelector('div.backdrop');
+				backdrop.classList.remove('active');
+				typeof callback == 'function' && callback();
+			}
 			$rootScope.deactivateLoader = function() {
-				const loaderBackdrop = document.querySelector('div.loader-backdrop');
-				loaderBackdrop.classList.remove('active');
-			};			
+				const loader = document.querySelector('.loader-container');
+				loader.classList.remove('active');
+				$rootScope.deactivateBackdrop();						
+			};	
+			$rootScope.activateBackdrop = function() {
+				const backdrop = document.querySelector('div.backdrop');
+				backdrop.classList.add('active');
+			}				
 			$scope.events = markets.then(function(success) {
 				var events = [];
 				for (var key in success) {
@@ -59,10 +69,17 @@ app.controller('BetController',['$scope',
 				$rootScope.deactivateLoader();
 			});
 			$scope.addBet = function(event,bet,callback) {
-				bet.event = event;
-				bet.stake = null;
-				bet.return = (bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake;
-				$scope.slip.push(bet);
+				var noDupe = $scope.slip.every(function(slipBet) {
+					return slipBet.id != bet.id;
+				});
+				if(noDupe) {
+					bet.event = event;
+					bet.stake = null;
+					bet.return = (bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake;
+					$scope.slip.push(bet);
+				} else {
+					$rootScope.displayError("Only one of each available bet can be added to your betting slip");
+				};
 			};
 		}
 	]);

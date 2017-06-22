@@ -9,10 +9,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 </head>
 <body ng-app="BetNow">
-	<div class="loader-backdrop active">	
-		<div class="loader-container">
-			<div class="loader"></div>	
-		</div>
+	<div class="backdrop active">	
+	</div>
+	<div class="loader-container active">
+		<div class="loader"></div>	
 	</div>
 	<div class="section header">
 		<div class="container">		
@@ -33,6 +33,7 @@
 	<script type="text/javascript" src="js/controllers/BetController.js"></script>
 	<script type="text/javascript" src="js/controllers/SlipController.js"></script>	
 	<script type="text/javascript" src="js/controllers/PlacedBetsController.js"></script>	
+	<script type="text/javascript" src="js/controllers/ErrorController.js"></script>
 
 	<!-- Services -->
 	<script type="text/javascript" src="js/services/markets.js"></script>
@@ -44,6 +45,7 @@
 	<script type="text/javascript" src="js/directives/bet.js"></script>
 	<script type="text/javascript" src="js/directives/slip.js"></script>
 	<script type="text/javascript" src="js/directives/available-bets.js"></script>
+	<script type="text/javascript" src="js/directives/error.js"></script>
 
 </body>
 </html>
