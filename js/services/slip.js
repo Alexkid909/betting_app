@@ -1,4 +1,4 @@
 app.factory('slip',[function() {
-	var slip = [];
+	var slip = {bets: []};
 	return slip
 }]);

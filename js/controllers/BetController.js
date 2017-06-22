@@ -3,15 +3,19 @@ app.controller('BetController',['$scope',
 		'slip',
 		'apiResponses',
 		'$rootScope',
-		function($scope,markets,slip,apiResponses,$rootScope) {
-			$scope.events = [];
+		function($scope,markets,slip,apiResponses,$rootScope) {			
+			$scope.events = {};
 			$scope.slip = slip;
 			$scope.responses = apiResponses;
 			$rootScope.counter = 0;
-			$rootScope.deactivateBackdrop = function(callback) {
+			$rootScope.activateLoader = function() {
+				const loader = document.querySelector('.loader-container');
+				loader.classList.add('active');
+				$rootScope.activateBackdrop();	
+			}
+			$rootScope.deactivateBackdrop = function() {
 				const backdrop = document.querySelector('div.backdrop');
 				backdrop.classList.remove('active');
-				typeof callback == 'function' && callback();
 			}
 			$rootScope.deactivateLoader = function() {
 				const loader = document.querySelector('.loader-container');
@@ -60,25 +64,26 @@ app.controller('BetController',['$scope',
 					events[eventKey].bets.push(bet);
 				};
 				$scope.events = events;
-			}).then(function(error) {
+			},function(error) {
 				if (error) {
 					$scope.responses.push(error);
-					console.log('Error placing bet: ',error);
+					$scope.displayMessage("Oops! Sorry, something went wrong.  Try refreshing the page, or if the problem persist please let us know.")
+					console.log('Error getting bet: ',error);
 				};
 			}).then(function() {
 				$rootScope.deactivateLoader();
 			});
 			$scope.addBet = function(event,bet,callback) {
-				var noDupe = $scope.slip.every(function(slipBet) {
+				var noDupe = $scope.slip.bets.every(function(slipBet) {
 					return slipBet.id != bet.id;
 				});
 				if(noDupe) {
 					bet.event = event;
 					bet.stake = null;
 					bet.return = (bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake;
-					$scope.slip.push(bet);
+					$scope.slip.bets.push(bet);
 				} else {
-					$rootScope.displayError("Only one of each available bet can be added to your betting slip");
+					$rootScope.displayMessage("Only one of each available bet can be added to your betting slip");
 				};
 			};
 		}

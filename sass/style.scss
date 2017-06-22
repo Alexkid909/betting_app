@@ -7,6 +7,7 @@ $yellow:rgb(255, 231, 0);
 $dark-green: rgb(0,34,0);
 $medium-green: rgb(0,136,0);
 $light-gray: rgb(200, 200, 200);
+$medium-gray: rgb(150,150,150);
 $dark-gray: rgb(80, 80, 80);
 
 html {
@@ -44,15 +45,15 @@ p, span, a, input, .btn {
 	&.dialog-btn {
 		margin-right: 1vw;
 		float: right;
-		color: $dark-gray;
+		color: #fff;
 		padding: 1vw 3vw;
 		font-size: 0.65rem;
 		margin-bottom: 0;
 	    background-color: transparent;
-	    border: 1px solid $dark-gray;		
+	    border: 1px solid #fff;		
 		&:hover {
-			color: $light-gray;
-			background-color: $dark-gray;	
+			color: $medium-gray;
+			background-color: #fff;	
 		}
 	}
 }
@@ -105,6 +106,12 @@ h1 {
 		padding: 1vw 2vw;
 	}
 	&.header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		height: 20vw;
+
 		background: linear-gradient(176deg,rgb(0, 0, 0),rgb(120,120,120),rgb(30, 30, 30));
 		.bet-now-logo {		
 			width: 65%;
@@ -115,6 +122,11 @@ h1 {
 			font-weight: 900;
 		}
 
+	}
+
+	&.main {
+		position: relative;
+		// margin-top: 20vw;
 	}
 }
 
@@ -151,7 +163,20 @@ div.main {
 		}		
 	}
 
+	available-bets, .placed-bets {
+		position: absolute;
+		top: 20vw;
+		width: 100vw;
+	}
+
 	available-bets {
+		bet {			
+			height: auto;
+		}
+		.bets {
+			margin-bottom: var(--slipHeaderHeight);
+			overflow-y: scroll;
+		}
 		min-height: 100vh;
 		.event {
 			color: inherit;
@@ -194,9 +219,11 @@ div.main {
 		}
 
 		.slip-header-section {
+			height: 15vw;
 			padding-top: 3.5vw;			
 			padding-bottom: 3vw;
-			border-bottom: 1px solid #aaaaaa;		
+			border-bottom: 1px solid #aaaaaa;
+			cursor: pointer;	
 			.bet-counter {
 				color: $medium-green;
 				border-radius: 100%;
@@ -243,6 +270,7 @@ div.main {
 			margin-right: 1vw;
 		}
 		input.stake {
+			text-align: center;
 			color: #fff;
 			height: auto;
 			font-size: 0.9rem;
@@ -269,14 +297,6 @@ div.main {
 	 	&:not(.active) {
 			transition: all ease-in 300ms;	 		
 	 	}
-		input.ng-touched.ng-invalid {
-			border: 1px solid red;
-		}
-
-		input.ng-dirty.ng-valid {
-			border: 1px solid green;
-		}
-
 
 		input.btn.place-bets {
 			display: block;
@@ -299,6 +319,30 @@ div.main {
 			padding-right: 2vw;
 			padding-top: 1vw;
 		}
+		form.slip-main-section {
+		&.ng-submitted {
+			input.ng-invalid {
+				border: 1px solid red;
+				color: red;
+				background-color: rgb(255,160,160);
+				&::placeholder {
+					color: rgb(200,50,50);
+				}
+			}
+		}
+		input.ng-touched.ng-invalid {
+			border: 1px solid red;
+			color: red;
+			background-color: rgb(255,160,160);
+			&::placeholder {
+				color: rgb(200,50,50);
+			}			
+		}
+
+		input.ng-dirty.ng-valid {
+			border: 1px solid green;
+		}
+		}
 	}
 
 	.placed-bets {
@@ -319,8 +363,8 @@ div.main {
 
 	error {
 		.error-dialog {
-			background-color: $light-gray;
-			color: $dark-gray;
+			background-color: $medium-gray;
+			color: #fff;
 			width: 80%;
 			position: fixed;
 			top: 50%;

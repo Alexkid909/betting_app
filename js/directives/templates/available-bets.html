@@ -3,8 +3,8 @@
 		<div class="event">
 			<span>Win {{event.name}}</span>		
 		</div>
-		<div ng-repeat="bet in event.bets">		
-			<bet class="bet-wrapper" ng-click="addBet(event.name,bet)">bet</bet>
-		</div>
+<!-- 		<div >		 -->
+			<bet ng-repeat="bet in event.bets" class="bet-wrapper" ng-click="addBet(event.name,bet)">bet</bet>
+<!-- 		</div> -->
 	</div>
 </div>

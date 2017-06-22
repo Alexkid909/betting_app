@@ -6,8 +6,7 @@ app.factory('markets',[
 			.then(function(success) {
 				var markets = success.data;
 				return markets;
-			})
-			.then(function(error) {
+			},function(error) {
 				var markets = error;
 				return markets;			
 			});

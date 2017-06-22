@@ -3,7 +3,8 @@ app.controller('SlipController',['$scope',
 	'slip',
 	'placedBets',
 	'apiResponses',
-	function($scope,$http,slip,placedBets,apiResponses) {
+	'$rootScope',
+	function($scope,$http,slip,placedBets,apiResponses,$rootScope) {
 		$scope.slip = slip;
 		$scope.placedBets = placedBets;
 		$scope.responses = apiResponses;
@@ -24,6 +25,7 @@ app.controller('SlipController',['$scope',
 		}
 		$scope.setInactiveSlipTransform();
 		$scope.placeBets = function(slip) {
+			$rootScope.activateLoader();
 			slip.forEach(function(slipLine) {
 				var bet = {
 					bet_id: slipLine.id,
@@ -33,14 +35,17 @@ app.controller('SlipController',['$scope',
 				$http.post('https://bedefetechtest.herokuapp.com/v1/bets',bet)
 				.then(function(success) {
 					$scope.placedBets.push(success.data);
-					console.log('Placed Bets: ',$scope.placedBets);
-				}).then(function(error) {
+					$rootScope.deactivateLoader();
+					$rootScope.displayMessage("Your bets have been placed.  You can view them by clicking My Bets above.");
+					$scope.slip.bets = [];
+					debugger;
+					$scope.bettingSlip.$setPristine()
+				},function(error) {
 					if(error) {
 						$scope.responses.push(error);
-						console.log('Error placing bet: ',error);				
+						$rootScope.displayMessage("Oops! Sorry, something went wrong and your bets couldn't be placed.  Please try again.");			
 					};
 				});
-			debugger;
 			});
 		};
 	}

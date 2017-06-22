@@ -1,13 +1,13 @@
-<div class="slip" ng-controller="SlipController">
+<div ng-hide="slip.bets.length < 1" class="slip" ng-controller="SlipController">
 	<div ng-click="toggleShowSlip()" class="slip-header-section">		
 		<h2 class="slip-header">Slip
 			<span class="glyphicon glyphicon-chevron-down"></span>
 			<span class="glyphicon glyphicon-chevron-up"></span>
-			<span class="bet-counter">{{slip.length}}</span>
+			<span class="bet-counter">{{slip.bets.length}}</span>
 		</h2>
 	</div>
-	<form class="slip-main-section" name="bettingSlip" ng-submit="bettingSlip.$valid && placeBets(slip)" novalidate>
-		<div class="slip-line-wrapper" ng-repeat="bet in slip">
+	<form class="slip-main-section" name="bettingSlip" ng-submit="bettingSlip.$valid && placeBets(slip.bets)" novalidate>
+		<div class="slip-line-wrapper" ng-repeat="bet in slip.bets">
 			<div class="form-group row">				
 				<div class="bet-name-group col-xs-8">
 					<bet class="bet-wrapper"></bet>
