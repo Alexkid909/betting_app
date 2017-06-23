@@ -6,7 +6,7 @@
 			<span class="bet-counter">{{slip.bets.length}}</span>
 		</h2>
 	</div>
-	<form class="slip-main-section" name="bettingSlip" ng-submit="bettingSlip.$valid && placeBets(slip.bets)" novalidate>
+	<form class="slip-main-section" name="bettingSlip" novalidate ng-submit="bettingSlip.$valid && placeBets(slip.bets)">
 		<div class="slip-line-wrapper" ng-repeat="bet in slip.bets">
 			<div class="form-group row">				
 				<div class="bet-name-group col-xs-8">
