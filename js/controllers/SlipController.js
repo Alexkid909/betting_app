@@ -11,9 +11,9 @@ app.controller('SlipController',['$scope',
 		$scope.slipActive = false;
 		$scope.setInactiveSlipTransform = function() {
 			const betSlipHeader = document.querySelector('slip.slip-wrapper .slip-header-section');
-			var betSlipHeaderHeight = betSlipHeader.getBoundingClientRect().height;
+			const betSlipHeaderHeight = betSlipHeader.getBoundingClientRect().height;
 			document.documentElement.style.setProperty("--slipHeaderHeight",betSlipHeaderHeight+"px");				
-			var slipHeaderHeight = document.documentElement.style.getPropertyValue("--slipHeaderHeight");
+			const slipHeaderHeight = document.documentElement.style.getPropertyValue("--slipHeaderHeight");
 		};
 		$scope.toggleShowSlip = function() {
 			const betSlip = document.querySelector('slip.slip-wrapper');
@@ -27,7 +27,7 @@ app.controller('SlipController',['$scope',
 		$scope.placeBets = function(slip) {
 			$rootScope.activateLoader();
 			slip.forEach(function(slipLine) {
-				var bet = {
+				let bet = {
 					bet_id: slipLine.id,
 					odds: slipLine.odds,
 					stake: slipLine.stake
@@ -38,7 +38,6 @@ app.controller('SlipController',['$scope',
 					$rootScope.deactivateLoader();
 					$rootScope.displayMessage("Your bets have been placed.  You can view them by clicking My Bets above.");
 					$scope.slip.bets = [];
-					debugger;
 					$scope.bettingSlip.$setPristine()
 				},function(error) {
 					if(error) {

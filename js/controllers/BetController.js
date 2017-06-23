@@ -7,40 +7,18 @@ app.controller('BetController',['$scope',
 			$scope.events = {};
 			$scope.slip = slip;
 			$scope.responses = apiResponses;
-			$rootScope.counter = 0;
-			$rootScope.activateLoader = function() {
-				const loader = document.querySelector('.loader-container');
-				loader.classList.add('active');
-				$rootScope.activateBackdrop();	
-			}
-			$rootScope.deactivateBackdrop = function() {
-				const backdrop = document.querySelector('div.backdrop');
-				backdrop.classList.remove('active');
-			}
-			$rootScope.deactivateLoader = function() {
-				const loader = document.querySelector('.loader-container');
-				loader.classList.remove('active');
-				$rootScope.deactivateBackdrop();						
-			};	
-			$rootScope.activateBackdrop = function() {
-				const backdrop = document.querySelector('div.backdrop');
-				backdrop.classList.add('active');
-			}				
+			$rootScope.counter = 0;			
 			$scope.events = markets.then(function(success) {
-				function debug(args) {
-					return true;
-				}
-				var findEvent = eventName => {
+				const findEvent = eventName => {
 						for (var key in events) {
 							var event = events[key];
-							// debug([event,eventName,key]);
 							if (event.name == eventName) {
 								return key;
 								break;
 							};
 						};
 					};
-				var createEvent = event => {
+				const createEvent = event => {
 					var event = {
 						name: event.event,
 						bets: [{name: event.name,
@@ -50,8 +28,8 @@ app.controller('BetController',['$scope',
 					};
 					events.push(event);
 				};
-				var createBet = (eventKey,event) => {
-					var bet = {name: event.name,
+				const createBet = (eventKey,event) => {
+					const bet = {name: event.name,
 								id: event.bet_id,
 								odds: event.odds
 					};
@@ -78,7 +56,7 @@ app.controller('BetController',['$scope',
 				$rootScope.deactivateLoader();
 			});
 			$scope.addBet = function(event,bet,callback) {
-				var noDupe = $scope.slip.bets.every(function(slipBet) {
+				const noDupe = $scope.slip.bets.every(function(slipBet) {
 					return slipBet.id != bet.id;
 				});
 				if(noDupe) {

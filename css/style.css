@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Raleway");
-html {
-  font-size: 5vw; }
-
 :root {
   --slipHeaderHeight: 0px; }
+
+html {
+  font-size: 5vw; }
 
 body {
   position: relative;
@@ -20,10 +20,10 @@ p, span, a, input, .btn {
   font-size: 1rem; }
 
 .btn {
-  padding: 3vw 4vw;
+  padding: 0.65rem 0;
   border-radius: 0;
   font-weight: 900;
-  margin: 2.5vw auto; }
+  margin: 0.9rem auto; }
   .btn.dialog-btn {
     margin-right: 1vw;
     float: right;
@@ -42,8 +42,14 @@ h1 {
 
 @keyframes spin {
   0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
     transform: rotate(0deg); }
   100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 .backdrop {
   height: 100vh;
@@ -67,34 +73,39 @@ h1 {
 
 .loader {
   border: 8px solid #f3f3f3;
-  /* Light grey */
   border-top: 8px solid #3498db;
-  /* Blue */
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 4rem;
+  height: 4rem;
+  -ms-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  -webkit-animation: spin 1s linear infinite;
   animation: spin 1s linear infinite; }
 
 .section .container {
-  padding: 1vw 2vw; }
+  padding: 1vw 2vw;
+  margin: 0;
+  width: 100%; }
 .section.header {
   width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
-  max-height: 25vw;
-  background: linear-gradient(176deg, black, #787878, #1e1e1e); }
+  background: linear-gradient(176deg, black, #787878, #1e1e1e);
+  height: 5rem; }
   .section.header .nav {
-    margin-bottom: 2vw; }
+    margin-bottom: 0.5rem; }
   .section.header .bet-now-logo-container {
-    width: 65%;
     margin-bottom: 0.5rem; }
     .section.header .bet-now-logo-container img {
       width: 65vw; }
   .section.header .placed-bets {
     font-size: 0.8rem;
     font-weight: 900;
+    -ms-transition: all linear 300ms;
+    -moz-transition: all linear 300ms;
+    -webkit-transition: all linear 300ms;
     transition: all linear 300ms;
     text-decoration: none; }
     .section.header .placed-bets:active {
@@ -118,10 +129,7 @@ div.header a {
 
 div.main div.event, div.main .bet-wrapper {
   display: block;
-  padding-right: 2.5vw;
-  padding-left: 3.5vw;
-  padding-top: 5vw;
-  padding-bottom: 3vw; }
+  padding: 1rem 0.65rem 0.65rem 1rem; }
 div.main .bet-wrapper {
   cursor: pointer; }
   div.main .bet-wrapper span {
@@ -130,7 +138,7 @@ div.main .bet-wrapper {
     color: #ffe700; }
 div.main available-bets, div.main .placed-bets {
   position: absolute;
-  top: 20vw;
+  top: 4.5rem;
   width: 100vw; }
 div.main available-bets {
   min-height: 100vh; }
@@ -139,6 +147,8 @@ div.main available-bets {
   div.main available-bets .bets {
     margin-bottom: var(--slipHeaderHeight);
     overflow-y: scroll; }
+    div.main available-bets .bets::-webkit-scrollbar {
+      display: none; }
   div.main available-bets .event {
     color: inherit;
     background: linear-gradient(176deg, #002200, #008800);
@@ -156,7 +166,7 @@ div.main slip, div.main .placed-bets {
   div.main slip.slip-wrapper h2.slip-header, div.main .placed-bets.slip-wrapper h2.slip-header {
     font-size: 1.5rem;
     display: inline-block;
-    margin: 0 0 0 3.5vw; }
+    margin: 0 0 0 1rem; }
     div.main slip.slip-wrapper h2.slip-header .glyphicon, div.main .placed-bets.slip-wrapper h2.slip-header .glyphicon {
       font-size: 0.65rem; }
     div.main slip.slip-wrapper h2.slip-header .glyphicon-chevron-down, div.main .placed-bets.slip-wrapper h2.slip-header .glyphicon-chevron-down {
@@ -164,9 +174,9 @@ div.main slip, div.main .placed-bets {
     div.main slip.slip-wrapper h2.slip-header .glyphicon-chevron-up, div.main .placed-bets.slip-wrapper h2.slip-header .glyphicon-chevron-up {
       display: initial; }
   div.main slip .slip-header-section, div.main .placed-bets .slip-header-section {
-    height: 15vw;
-    padding-top: 3.5vw;
-    padding-bottom: 3vw;
+    height: 2.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.45rem;
     border-bottom: 1px solid #aaaaaa;
     cursor: pointer; }
     div.main slip .slip-header-section .bet-counter, div.main .placed-bets .slip-header-section .bet-counter {
@@ -174,18 +184,17 @@ div.main slip, div.main .placed-bets {
       border-radius: 100%;
       background-color: #ffe700;
       display: inline-block;
-      min-width: 7.5vw;
-      min-height: 7.5vw;
+      width: 1.5rem;
+      height: 1.5rem;
       vertical-align: text-top;
       text-align: center;
-      color: medium-green;
       font-size: 0.8rem;
       font-weight: 900;
       border: 3px solid white;
-      padding-top: 0.5vw;
-      margin-top: 1vw; }
+      padding-top: 0.15rem;
+      margin-top: 0.15rem; }
   div.main slip .slip-line-wrapper, div.main slip .placed-bet-wrapper, div.main .placed-bets .slip-line-wrapper, div.main .placed-bets .placed-bet-wrapper {
-    padding: 2vw 3.5vw 1.5vw 3.5vw;
+    padding: 0.4rem 1.1rem 0.3rem;
     border-bottom: 1px solid #aaaaaa; }
   div.main slip .form-group, div.main slip .placed-bet-wrapper, div.main .placed-bets .form-group, div.main .placed-bets .placed-bet-wrapper {
     margin: 0; }
@@ -201,26 +210,36 @@ div.main slip, div.main .placed-bets {
     padding-right: 2vw; }
   div.main slip .return, div.main .placed-bets .return {
     font-size: 0.65rem;
-    float: right;
-    margin-right: 1vw; }
+    float: right; }
   div.main slip input.stake, div.main .placed-bets input.stake {
+    margin-left: auto;
     text-align: center;
     color: #fff;
     height: auto;
     font-size: 0.9rem;
     border-radius: 0;
     background-color: #938f8f;
-    border-color: #484848; }
+    border-color: #484848;
+    max-width: 25vh; }
     div.main slip input.stake::placeholder, div.main .placed-bets input.stake::placeholder {
       color: #fff; }
   div.main slip.active, div.main .placed-bets.active {
+    -ms-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -webkit-transform: translateY(0);
     transform: translateY(0);
+    -ms-transition: all ease-in 300ms;
+    -moz-transition: all ease-in 300ms;
+    -webkit-transition: all ease-in 300ms;
     transition: all ease-in 300ms; }
     div.main slip.active h2.slip-header .glyphicon-chevron-down, div.main .placed-bets.active h2.slip-header .glyphicon-chevron-down {
       display: initial; }
     div.main slip.active h2.slip-header .glyphicon-chevron-up, div.main .placed-bets.active h2.slip-header .glyphicon-chevron-up {
       display: none; }
   div.main slip:not(.active), div.main .placed-bets:not(.active) {
+    -ms-transition: all ease-in 300ms;
+    -moz-transition: all ease-in 300ms;
+    -webkit-transition: all ease-in 300ms;
     transition: all ease-in 300ms; }
   div.main slip input.btn.place-bets, div.main .placed-bets input.btn.place-bets {
     display: block;
@@ -230,9 +249,15 @@ div.main slip, div.main .placed-bets {
     border: none;
     background-color: #ffe700;
     color: #006600; }
+    div.main slip input.btn.place-bets:hover, div.main .placed-bets input.btn.place-bets:hover {
+      background-color: #008800;
+      color: #ffe700; }
 div.main slip {
   position: fixed;
   bottom: 0;
+  -ms-transform: translateY(calc(100% - var(--slipHeaderHeight)));
+  -moz-transform: translateY(calc(100% - var(--slipHeaderHeight)));
+  -webkit-transform: translateY(calc(100% - var(--slipHeaderHeight)));
   transform: translateY(calc(100% - var(--slipHeaderHeight))); }
   div.main slip .bet-name-group {
     padding-right: 2vw;
@@ -263,17 +288,23 @@ div.main .placed-bets span.stake {
 div.main error .error-dialog {
   background-color: #969696;
   color: #fff;
-  width: 80%;
+  width: 15rem;
   position: fixed;
   top: 50%;
   left: 50%;
+  -ms-transform: translate(-150vw, -50%);
+  -moz-transform: translate(-150vw, -50%);
+  -webkit-transform: translate(-150vw, -50%);
   transform: translate(-150vw, -50%);
-  padding: 3.5vw 3vw;
+  padding: 1.15rem 1rem;
   transition: all ease-in 300ms;
   opacity: 0;
   z-index: 3; }
   div.main error .error-dialog.active {
     opacity: 1;
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
   div.main error .error-dialog .error-message {
     font-size: 0.85rem; }
@@ -291,8 +322,8 @@ div.main error .error-dialog {
 /* The switch - the box around the slider */
 .switch {
   position: relative;
-  width: 15vw;
-  height: 7vw; }
+  width: 3rem;
+  height: 1.5rem; }
 
 /* Hide default HTML checkbox */
 .switch input {
@@ -307,20 +338,24 @@ div.main error .error-dialog {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s; }
+  -ms-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s; }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 5vw;
-  width: 5vw;
-  left: 1vw;
-  bottom: 1vw;
-  top: 1vw;
+  height: 1rem;
+  width: 1rem;
+  left: 0.15rem;
+  bottom: 0.25rem;
+  top: 0.25rem;
   background-color: #505050;
-  -webkit-transition: .4s;
-  transition: .4s; }
+  -ms-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s; }
 
 input:checked + .slider {
   background-color: #ffe700; }
@@ -329,14 +364,27 @@ input:focus + .slider {
   box-shadow: 0 0 1px #ffe700; }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(8vw);
-  -ms-transform: translateX(8vw);
-  transform: translateX(8vw); }
+  -ms-transform: translateX(1.7rem);
+  -moz-transform: translateX(1.7rem);
+  -webkit-transform: translateX(1.7rem);
+  transform: translateX(1.7rem); }
 
 .slider.round {
   border-radius: 10px; }
 
 .slider.round:before {
   border-radius: 50%; }
+
+@media (min-aspect-ratio: 1 / 1) {
+  html {
+    font-size: 4vh; }
+    html .section.header .bet-now-logo {
+      width: 25vw; }
+    html div.main available-bets {
+      margin-right: 1rem;
+      overflow-x: hidden;
+      width: 100%; }
+    html div.main .slip input.btn.place-bets {
+      width: 30%; } }
 
 /*# sourceMappingURL=style.css.map */

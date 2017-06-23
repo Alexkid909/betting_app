@@ -1,14 +1,14 @@
 <div class="placed-bets">	
 	<div class="placed-bet-wrapper row" ng-repeat="bet in events">
-		<div class="bet-trans-id-group col-xs-2">
+		<div class="bet-trans-id-group col-md-2 col-xs-2">
 			<span class="trans-id-label">Ref</span>			
 			<span class="trans-id">{{bet.transaction_id}}</span>
 		</div>
-		<div class="bet-name-group col-xs-6">
+		<div class="bet-name-group col-md-8 col-xs-6">
 			<bet></bet>
 			<span class="event-name">To win {{bet.event}}</span>
 		</div>
-		<div class="bet-stake-group col-xs-4">
+		<div class="bet-stake-group col-md-2 col-xs-4">
 			<span class="stake">Stake {{bet.stake}}</span>
 			<span class="return">
 				Return {{(bet.stake == null ? 0 : (bet.stake / bet.odds.denominator * bet.odds.numerator) + bet.stake) | currency:"£"}}
