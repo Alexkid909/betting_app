@@ -28,7 +28,6 @@ app.controller('BetController',['$scope',
 			}				
 			$scope.events = markets.then(function(success) {
 				function debug(args) {
-					debugger
 					return true;
 				}
 				var findEvent = eventName => {
@@ -52,7 +51,6 @@ app.controller('BetController',['$scope',
 					events.push(event);
 				};
 				var createBet = (eventKey,event) => {
-					debugger;
 					var bet = {name: event.name,
 								id: event.bet_id,
 								odds: event.odds
@@ -70,7 +68,6 @@ app.controller('BetController',['$scope',
 					}
 				};
 				$scope.events = events;
-				debugger;
 			},function(error) {
 				if (error) {
 					$scope.responses.push(error);

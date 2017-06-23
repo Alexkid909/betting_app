@@ -78,18 +78,31 @@ h1 {
 .section .container {
   padding: 1vw 2vw; }
 .section.header {
+  width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
-  height: 20vw;
+  max-height: 25vw;
   background: linear-gradient(176deg, black, #787878, #1e1e1e); }
-  .section.header .bet-now-logo {
+  .section.header .nav {
+    margin-bottom: 2vw; }
+  .section.header .bet-now-logo-container {
     width: 65%;
     margin-bottom: 0.5rem; }
+    .section.header .bet-now-logo-container img {
+      width: 65vw; }
   .section.header .placed-bets {
     font-size: 0.8rem;
-    font-weight: 900; }
+    font-weight: 900;
+    transition: all linear 300ms;
+    text-decoration: none; }
+    .section.header .placed-bets:active {
+      color: #fff; }
+    .section.header .placed-bets:visited {
+      color: #fff; }
+    .section.header .placed-bets:hover {
+      color: #ffe700; }
 .section.main {
   position: relative; }
 
@@ -264,5 +277,66 @@ div.main error .error-dialog {
     transform: translate(-50%, -50%); }
   div.main error .error-dialog .error-message {
     font-size: 0.85rem; }
+
+.odds-type-container {
+  float: right; }
+
+.odds-type-header {
+  font-size: 0.5rem; }
+
+.odds-type-header, .switch {
+  display: block;
+  margin: 0 auto; }
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  width: 15vw;
+  height: 7vw; }
+
+/* Hide default HTML checkbox */
+.switch input {
+  display: none; }
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 5vw;
+  width: 5vw;
+  left: 1vw;
+  bottom: 1vw;
+  top: 1vw;
+  background-color: #505050;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .slider {
+  background-color: #ffe700; }
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #ffe700; }
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(8vw);
+  -ms-transform: translateX(8vw);
+  transform: translateX(8vw); }
+
+.slider.round {
+  border-radius: 10px; }
+
+.slider.round:before {
+  border-radius: 50%; }
 
 /*# sourceMappingURL=style.css.map */

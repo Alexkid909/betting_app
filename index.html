@@ -16,11 +16,20 @@
 		<div class="loader"></div>	
 	</div>
 	<div class="section header">
-		<div class="container">		
-			<a class="placed-bets" href="#/placed-bets">My Bets</a>
-			<a href="#/">			
+		<div class="container">
+			<div class="nav">
+				<a class="placed-bets" href="#/placed-bets">My Bets</a>
+			</div>		
+			<a class="bet-now-logo-container"" href="#/">			
 					<img class="bet-now-logo" src="img/bet-now-logo.png">
 			</a>
+			<div class="odds-type-container" ng-controller="MainController">
+				<span class="odds-type-header">Decimal Odds{{$rootScope.decimalOdds.value}}</span>
+				<label class="switch">
+				  <input type="checkbox" ng-model=decimalOdds.value>
+				  <div class="slider round"></div>
+				</label>
+			</div>
 		</div>
 	</div>
 	<div class="section main" ng-view>
@@ -31,6 +40,7 @@
 	<script type="text/javascript" src="js/app.js"></script>
 
 	<!-- Controllers -->
+	<script type="text/javascript" src="js/controllers/MainController.js"></script>
 	<script type="text/javascript" src="js/controllers/BetController.js"></script>
 	<script type="text/javascript" src="js/controllers/SlipController.js"></script>	
 	<script type="text/javascript" src="js/controllers/PlacedBetsController.js"></script>	
@@ -47,6 +57,6 @@
 	<script type="text/javascript" src="js/directives/slip.js"></script>
 	<script type="text/javascript" src="js/directives/available-bets.js"></script>
 	<script type="text/javascript" src="js/directives/error.js"></script>
-
+	<script type="text/javascript" src="js/directives/odds.js"></script>
 </body>
 </html>

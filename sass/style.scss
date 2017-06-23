@@ -67,6 +67,12 @@ h1 {
     100% { transform: rotate(360deg); }
 }
 
+// @keyframes colorWave {
+// 		0% {color:  }
+// 	}
+
+
+
 .backdrop {
 	height: 100vh;
 	width: 100vw;
@@ -106,20 +112,39 @@ h1 {
 		padding: 1vw 2vw;
 	}
 	&.header {
+		width: 100vw;
 		position: fixed;
 		top: 0;
 		left: 0;
 		z-index: 1;
-		height: 20vw;
-
+		max-height: 25vw;
 		background: linear-gradient(176deg,rgb(0, 0, 0),rgb(120,120,120),rgb(30, 30, 30));
-		.bet-now-logo {		
+		.nav {
+			margin-bottom: 2vw;
+		}
+		
+		.bet-now-logo-container {		
 			width: 65%;
 			margin-bottom: 0.5rem;
+			img {
+				width: 65vw;
+			}
 		}
 		.placed-bets {
 			font-size: 0.8rem;
 			font-weight: 900;
+			transition: all linear 300ms;
+			text-decoration: none;
+			
+			&:active {
+				color: #fff;
+			}
+			&:visited {
+				color: #fff;		
+			}
+			&:hover{
+				color: $yellow;
+			}
 		}
 
 	}
@@ -384,4 +409,79 @@ div.main {
 		}
 	}	
 
+}
+
+
+
+.odds-type-container {
+	float: right;
+}
+
+.odds-type-header {
+	font-size: 0.5rem;
+}
+
+.odds-type-header, .switch {
+	display: block;
+	margin: 0 auto;
+}
+
+
+// @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  width: 15vw;
+  height: 7vw;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 5vw;
+  width: 5vw;
+  left: 1vw;
+  bottom: 1vw;
+  top: 1vw;
+  background-color: $dark-gray;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: $yellow;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $yellow;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(8vw);
+  -ms-transform: translateX(8vw);
+  transform: translateX(8vw);
+}
+
+.slider.round {
+  border-radius: 10px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
