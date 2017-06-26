@@ -163,7 +163,7 @@ div.main available-bets {
       color: #ffe700;
       margin-left: 5vw; }
 div.main slip, div.main .placed-bets {
-  width: 100%;
+  width: 100vw;
   background: linear-gradient(0deg, #413f3f, #808080); }
   div.main slip.slip-wrapper h2.slip-header, div.main .placed-bets.slip-wrapper h2.slip-header {
     font-size: 1.5rem;
@@ -266,6 +266,7 @@ div.main slip {
   bottom: 0;
   max-height: 27.5rem;
   overflow-y: scroll;
+  overflow-x: hidden;
   z-index: 2;
   -ms-transform: translateY(calc(100% - var(--slipHeaderHeight)));
   -moz-transform: translateY(calc(100% - var(--slipHeaderHeight)));
