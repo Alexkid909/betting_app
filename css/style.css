@@ -117,7 +117,7 @@ h1 {
 .section.main {
   position: absolute;
   top: 5rem;
-  width: 100vw; }
+  width: 100%; }
 
 .col-sm-6 {
   padding-left: 0;
