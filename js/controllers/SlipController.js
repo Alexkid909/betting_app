@@ -11,10 +11,6 @@ app.controller('SlipController',['$scope',
 		$scope.slipActive = false;
 		$scope.toggleShowSlip = function() {
 			const betSlip = document.querySelector('slip.slip-wrapper');
-			if(betSlip.classList.contains('active')) {
-
-
-			}
 			betSlip.classList.toggle('active');
 		}
 		$scope.addResizeEventListener = function() {
