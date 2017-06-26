@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
 @import "helpers/mixins";
+@import "helpers/animations";
 
 // Sass Varicables
 
@@ -65,11 +66,6 @@ h1 {
 	font-size: 3rem;
 }
 
-@keyframes spin {
-    0% { @include prefixer(transform, rotate(0deg)) }
-    100% { @include prefixer(transform, rotate(360deg)) }
-}
-
 .backdrop {
 	height: 100vh;
 	width: 100vw;
@@ -106,12 +102,12 @@ h1 {
 .section {
 
 	.container {
-		padding: 1vw 2vw;
+		padding: 0.25rem 0.5rem;
 		margin: 0;
 		width: 100%;
 	}
 	&.header {
-		width: 100vw;
+		width: 100%;
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -125,7 +121,7 @@ h1 {
 		.bet-now-logo-container {		
 			margin-bottom: 0.5rem;
 			img {
-				width: 65vw;
+				width: 12rem;
 			}
 		}
 		.placed-bets {
@@ -148,7 +144,9 @@ h1 {
 	}
 
 	&.main {
-		position: relative;
+			position: absolute;
+    		top: 5rem;
+    		width: 100vw;
 	}
 }
 
@@ -184,7 +182,7 @@ div.main {
 
 	available-bets, .placed-bets {
 		position: absolute;
-		top: 4.5rem;
+		top: 0;
 		width: 100vw;
 	}
 
@@ -245,7 +243,8 @@ div.main {
 			padding-top: 0.5rem;			
 			padding-bottom: 0.45rem;
 			border-bottom: 1px solid #aaaaaa;
-			cursor: pointer;	
+			cursor: pointer;
+			width: 100vw;	
 			.bet-counter {
 				color: $medium-green;
 				border-radius: 100%;
@@ -304,11 +303,14 @@ div.main {
 			}
 		}
 
+		&.disabled {
+			display: block;
+			@include prefixer(transform,translateY(100%));			
+		}
+
 	 	&.active {
+	 	@include prefixer(transition,all ease-in 300ms); 		
 	 		@include prefixer(transform,translateY(0));
-	 		// transform: translateY(0);
-	 		@include prefixer(transition,all ease-in 300ms);
-			// transition: all ease-in 300ms;	 		
 			h2.slip-header {
 				.glyphicon-chevron-down {
 					display: initial;
@@ -319,8 +321,7 @@ div.main {
 			}
 	 	}
 	 	&:not(.active) {
-	 		@include prefixer(transition, all ease-in 300ms);
-			// transition: all ease-in 300ms;	 		
+	 		@include prefixer(transition, all ease-in 300ms); 		
 	 	}
 
 		input.btn.place-bets {
@@ -343,13 +344,16 @@ div.main {
 	slip {
 		position: fixed;
 		bottom: 0;
+		max-height: 27.5rem;
+		overflow-y: scroll;	
+		z-index: 2;	
 		@include prefixer(transform,translateY(calc(100% - var(--slipHeaderHeight))));
-		// transform: translateY(calc(100% - var(--slipHeaderHeight)));	 		
 		.bet-name-group {
 			padding-right: 2vw;
 			padding-top: 1vw;
 		}
 		form.slip-main-section {
+
 		&.ng-submitted {
 			input.ng-invalid {
 				border: 1px solid red;
@@ -400,7 +404,6 @@ div.main {
 			top: 50%;
 			left: 50%;
 			@include prefixer(transform, translate(-150vw,-50%));
-			// transform: translate(-150vw,-50%);
 			padding: 1.15rem 1rem;
 			transition: all ease-in 300ms;
 			opacity: 0;
@@ -408,7 +411,6 @@ div.main {
 			&.active {
 				opacity: 1;
 				@include prefixer(transform, translate(-50%,-50%));
-				// transform: translate(-50%,-50%);
 			}
 			.error-message {
 				font-size: 0.85rem;
@@ -433,19 +435,14 @@ div.main {
 	margin: 0 auto;
 }
 
-
-// @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
-/* The switch - the box around the slider */
 .switch {
 	position: relative;
 	width: 3rem;
 	height: 1.5rem;
 }
 
-/* Hide default HTML checkbox */
 .switch input {display:none;}
 
-/* The slider */
 .slider {
 	position: absolute;
 	cursor: pointer;
@@ -480,9 +477,6 @@ input:focus + .slider {
 
 input:checked + .slider:before {
 	@include prefixer(transform, translateX(1.7rem));
-  // -webkit-transform: translateX(1.7rem);
-  // -ms-transform: translateX(1.7rem);
-  // transform: translateX(1.7rem);
 }
 
 .slider.round {
@@ -493,19 +487,20 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-@media (min-aspect-ratio: 1/1) {
+
+@media (min-aspect-ratio: 3/2) {
+
 	html {
-		font-size: 4vh;	
+		font-size: 3vh;	
 		.section {
 			&.header {
 				.bet-now-logo {
-					width: 25vw;
+					// width: 25vw;
 				}
 			}
 		}
 		div.main {
 			available-bets {
-				margin-right: 1rem;
 				overflow-x: hidden;
     			width: 100%;				
 			}
@@ -515,6 +510,17 @@ input:checked + .slider:before {
 				}
 			}
 		}
+	}
+}
 
+@media (min-aspect-ratio: 3/2) and (max-width: 961px ) {
+	html {
+		font-size: 2.5vw;
+	}
+}
+
+@media (min-aspect-ratio: 3/2) and (max-width: 600px ) {
+	html {
+		font-size: 2.75vw;
 	}
 }

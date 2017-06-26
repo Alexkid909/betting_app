@@ -1,4 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Raleway");
+@keyframes spin {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
 :root {
   --slipHeaderHeight: 0px; }
 
@@ -40,17 +51,6 @@ p, span, a, input, .btn {
 h1 {
   font-size: 3rem; }
 
-@keyframes spin {
-  0% {
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -ms-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
 .backdrop {
   height: 100vh;
   width: 100vw;
@@ -83,11 +83,11 @@ h1 {
   animation: spin 1s linear infinite; }
 
 .section .container {
-  padding: 1vw 2vw;
+  padding: 0.25rem 0.5rem;
   margin: 0;
   width: 100%; }
 .section.header {
-  width: 100vw;
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
@@ -99,7 +99,7 @@ h1 {
   .section.header .bet-now-logo-container {
     margin-bottom: 0.5rem; }
     .section.header .bet-now-logo-container img {
-      width: 65vw; }
+      width: 12rem; }
   .section.header .placed-bets {
     font-size: 0.8rem;
     font-weight: 900;
@@ -115,7 +115,9 @@ h1 {
     .section.header .placed-bets:hover {
       color: #ffe700; }
 .section.main {
-  position: relative; }
+  position: absolute;
+  top: 5rem;
+  width: 100vw; }
 
 .col-sm-6 {
   padding-left: 0;
@@ -138,7 +140,7 @@ div.main .bet-wrapper {
     color: #ffe700; }
 div.main available-bets, div.main .placed-bets {
   position: absolute;
-  top: 4.5rem;
+  top: 0;
   width: 100vw; }
 div.main available-bets {
   min-height: 100vh; }
@@ -178,7 +180,8 @@ div.main slip, div.main .placed-bets {
     padding-top: 0.5rem;
     padding-bottom: 0.45rem;
     border-bottom: 1px solid #aaaaaa;
-    cursor: pointer; }
+    cursor: pointer;
+    width: 100vw; }
     div.main slip .slip-header-section .bet-counter, div.main .placed-bets .slip-header-section .bet-counter {
       color: #008800;
       border-radius: 100%;
@@ -223,15 +226,21 @@ div.main slip, div.main .placed-bets {
     max-width: 25vh; }
     div.main slip input.stake::placeholder, div.main .placed-bets input.stake::placeholder {
       color: #fff; }
+  div.main slip.disabled, div.main .placed-bets.disabled {
+    display: block;
+    -ms-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%); }
   div.main slip.active, div.main .placed-bets.active {
-    -ms-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
     -ms-transition: all ease-in 300ms;
     -moz-transition: all ease-in 300ms;
     -webkit-transition: all ease-in 300ms;
-    transition: all ease-in 300ms; }
+    transition: all ease-in 300ms;
+    -ms-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
     div.main slip.active h2.slip-header .glyphicon-chevron-down, div.main .placed-bets.active h2.slip-header .glyphicon-chevron-down {
       display: initial; }
     div.main slip.active h2.slip-header .glyphicon-chevron-up, div.main .placed-bets.active h2.slip-header .glyphicon-chevron-up {
@@ -255,6 +264,9 @@ div.main slip, div.main .placed-bets {
 div.main slip {
   position: fixed;
   bottom: 0;
+  max-height: 27.5rem;
+  overflow-y: scroll;
+  z-index: 2;
   -ms-transform: translateY(calc(100% - var(--slipHeaderHeight)));
   -moz-transform: translateY(calc(100% - var(--slipHeaderHeight)));
   -webkit-transform: translateY(calc(100% - var(--slipHeaderHeight)));
@@ -319,17 +331,14 @@ div.main error .error-dialog {
   display: block;
   margin: 0 auto; }
 
-/* The switch - the box around the slider */
 .switch {
   position: relative;
   width: 3rem;
   height: 1.5rem; }
 
-/* Hide default HTML checkbox */
 .switch input {
   display: none; }
 
-/* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -375,16 +384,19 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%; }
 
-@media (min-aspect-ratio: 1 / 1) {
+@media (min-aspect-ratio: 3 / 2) {
   html {
-    font-size: 4vh; }
-    html .section.header .bet-now-logo {
-      width: 25vw; }
+    font-size: 3vh; }
     html div.main available-bets {
-      margin-right: 1rem;
       overflow-x: hidden;
       width: 100%; }
     html div.main .slip input.btn.place-bets {
       width: 30%; } }
+@media (min-aspect-ratio: 3 / 2) and (max-width: 961px) {
+  html {
+    font-size: 2.5vw; } }
+@media (min-aspect-ratio: 3 / 2) and (max-width: 600px) {
+  html {
+    font-size: 2.75vw; } }
 
 /*# sourceMappingURL=style.css.map */

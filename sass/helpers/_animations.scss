@@ -1,0 +1,4 @@
+@keyframes spin {
+    0% { @include prefixer(transform, rotate(0deg)) }
+    100% { @include prefixer(transform, rotate(360deg)) }
+}

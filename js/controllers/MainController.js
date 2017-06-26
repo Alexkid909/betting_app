@@ -13,21 +13,17 @@ app.controller('MainController',[
 			$rootScope.activateBackdrop();	
 		}
 		$rootScope.deactivateBackdrop = function() {
-			setTimeout(() => {
 				const backdrop = document.querySelector('div.backdrop');
 				backdrop.classList.remove('active');
-			},100);
 		}
 		$rootScope.deactivateLoader = function() {
 			$rootScope.deactivateBackdrop();
-			setTimeout(() => {
 				const loader = document.querySelector('.loader-container');
 				loader.classList.remove('active');
-			},100)
 		}	
 		$rootScope.activateBackdrop = function() {
 			const backdrop = document.querySelector('div.backdrop');
 			backdrop.classList.add('active');
-		};		
+		};	
 	}
 ]);

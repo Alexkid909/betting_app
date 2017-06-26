@@ -3,12 +3,13 @@ app.controller('BetController',['$scope',
 		'slip',
 		'apiResponses',
 		'$rootScope',
-		function($scope,markets,slip,apiResponses,$rootScope) {			
-			$scope.events = {};
+		'extraDemoData',
+		function($scope,markets,slip,apiResponses,$rootScope,extraDemoData) {			
+			$scope.events = [];
 			$scope.slip = slip;
 			$scope.responses = apiResponses;
-			$rootScope.counter = 0;			
-			$scope.events = markets.then(function(success) {
+			$rootScope.counter = 0;		
+			markets.then(function(success) {
 				const findEvent = eventName => {
 						for (var key in events) {
 							var event = events[key];
@@ -36,21 +37,26 @@ app.controller('BetController',['$scope',
 					events[eventKey].bets.push(bet);
 				};
 				var events = [];
-				for (var key in success) {
-					var event = success[key]
-					var eventKey = findEvent(event.event)
-					if(!eventKey) {
-						createEvent(event);
-					} else {
-						createBet(eventKey,event);
-					}
+				var demoData = extraDemoData;
+				const aggregateAndPushMarketsData = (dataArray) => {
+					dataArray.forEach(arrayItem => {
+						for (var key in arrayItem) {
+							var event = arrayItem[key]
+							var eventKey = findEvent(event.event)
+							if(!eventKey) {
+								createEvent(event);
+							} else {
+								createBet(eventKey,event);
+							};
+						};
+					});
 				};
+				aggregateAndPushMarketsData([success,demoData]);
 				$scope.events = events;
 			},function(error) {
 				if (error) {
 					$scope.responses.push(error);
 					$scope.displayMessage("Oops! Sorry, something went wrong.  Try refreshing the page, or if the problem persist please let us know.")
-					console.log('Error getting bet: ',error);
 				};
 			}).then(function() {
 				$rootScope.deactivateLoader();
