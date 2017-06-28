@@ -180,6 +180,10 @@ div.main {
 		}		
 	}
 
+	// bet, odds {
+	// 	display: inline-block;
+	// }
+
 	available-bets, .placed-bets {
 		position: absolute;
 		top: 0;
@@ -187,7 +191,7 @@ div.main {
 	}
 
 	available-bets {
-		bet {			
+		bet {
 			height: auto;
 		}
 		.bets {

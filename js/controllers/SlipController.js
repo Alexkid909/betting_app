@@ -5,6 +5,8 @@ app.controller('SlipController',['$scope',
 	'apiResponses',
 	'$rootScope',
 	function($scope,$http,slip,placedBets,apiResponses,$rootScope) {
+		console.log("Slip Controller");
+		debugger;
 		$scope.slip = slip;
 		$scope.placedBets = placedBets;
 		$scope.responses = apiResponses;

@@ -3,6 +3,10 @@ app.directive('bet',function() {
 	return {
 		retrict: 'E',
 		templateUrl: 'js/directives/templates/bet.html',
-		controller: 'BetController'
+		scope:{
+			name:'@',
+			denominator: '@',
+			numerator: '@'
+		}
 	};
 });
