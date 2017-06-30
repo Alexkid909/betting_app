@@ -218,6 +218,8 @@ div.main {
 		bet {
 			height: auto;
 		}
+
+
 		.bets {
 			margin-bottom: var(--slipHeaderHeight);
 			overflow-y: scroll;
@@ -242,6 +244,7 @@ div.main {
 				margin-left: 5vw;
 			}
 		}
+
 	}
 
 	slip, .placed-bets {
@@ -305,20 +308,18 @@ div.main {
 		span.bet-odds {
 			float: right;
 		}
-		.bet-wrapper {
+		.bet-name-group, .bet-trans-id-group, .bet-stake-group, .bet-wrapper {
 			padding: 0;
-		}		
-		.bet-name-group, .bet-stake-group, .bet-trans-id-group {
-			padding: 0;
-			padding-right: 2vw;
 		}
-		input.stake, .return {
-			float: right;
-		};
+		.bet-stake-group {
+			padding-left: 0.75rem;
+		}
+		.bet-trans-id-group {
+			padding-right: 0.75rem;
+		}				
 		.return {
 			font-size: 0.65rem;
 			width: 100%;
-			text-align: right;
 		}
 		input.stake {
 		    margin-left: auto;			
@@ -329,7 +330,7 @@ div.main {
 			border-radius: 0;
 			background-color: #938f8f;
 			border-color:#484848;
-			max-width: 25vh;
+			max-width: 5rem;
 			&::placeholder {
 				color: #fff;
 			}
@@ -359,10 +360,6 @@ div.main {
 			@include prefixer(transform,translateY(100%));			
 		}
 
-	 	// &:not(.active) {
-	 	// 	@include prefixer(transition, transform ease-in 300ms); 		
-	 	// }
-
 		input.btn.place-bets {
 			display: block;
 			position: relative;
@@ -389,33 +386,38 @@ div.main {
 		z-index: 2;	
 		@include prefixer(transform,translateY(calc(100% - var(--slipHeaderHeight))));
 		.bet-name-group {
-			padding-right: 2vw;
-			padding-top: 1vw;
+			padding-top: 0.33rem;
 		}
 		form.slip-main-section {
+			input.stake, .return {
+				float: left;
+			};
+			.return {
+				margin-left: 0.125rem;
+			};	
 
-		&.ng-submitted {
-			input.ng-invalid {
+			&.ng-submitted {
+				input.ng-invalid {
+					border: 1px solid red;
+					color: red;
+					background-color: rgb(255,160,160);
+					&::placeholder {
+						color: rgb(200,50,50);
+					}
+				}
+			}
+			input.ng-touched.ng-invalid {
 				border: 1px solid red;
 				color: red;
 				background-color: rgb(255,160,160);
 				&::placeholder {
 					color: rgb(200,50,50);
-				}
+				}			
 			}
-		}
-		input.ng-touched.ng-invalid {
-			border: 1px solid red;
-			color: red;
-			background-color: rgb(255,160,160);
-			&::placeholder {
-				color: rgb(200,50,50);
-			}			
-		}
 
-		input.ng-dirty.ng-valid {
-			border: 1px solid green;
-		}
+			input.ng-dirty.ng-valid {
+				border: 1px solid green;
+			}
 		}
 	}
 
@@ -427,6 +429,12 @@ div.main {
 				margin: 0 auto;
 			}
 		}
+
+		.return {
+			text-align: right;
+			float: right;
+		};
+
 		span.bet-odds {
 			float: none;
 		}
@@ -507,6 +515,11 @@ input:checked + .slider:before {
 @media (min-aspect-ratio: 3/2) {
 
 	html {
+
+		.col-xs-8 {
+			width: 83%;
+		}
+
 		font-size: 3vh;	
 
 		div.main {
@@ -516,6 +529,9 @@ input:checked + .slider:before {
 			.slip {
 				input.btn.place-bets {
 					width: 30%;
+				}
+				.bet-stake-group {
+					width: 17%;
 				}
 			}
 		}
