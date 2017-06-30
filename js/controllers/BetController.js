@@ -5,10 +5,11 @@ app.controller('BetController',['$scope',
 		'$rootScope',
 		'extraDemoData',
 		function($scope,markets,slip,apiResponses,$rootScope,extraDemoData) {			
+			$scope.decimalOdds = $rootScope.decimalOdds;
 			$scope.events = [];
 			$scope.slip = slip;
 			$scope.responses = apiResponses;
-			$rootScope.counter = 0;		
+			$rootScope.counter = 0;	
 			markets.then(function(success) {
 				const findEvent = eventName => {
 						for (var key in events) {
@@ -51,7 +52,7 @@ app.controller('BetController',['$scope',
 						};
 					});
 				};
-				aggregateAndPushMarketsData([success,demoData]);
+				aggregateAndPushMarketsData([success/*,demoData*/]);
 				$scope.events = events;
 			},function(error) {
 				if (error) {

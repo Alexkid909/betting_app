@@ -29,6 +29,7 @@ body {
 	border-right: 2px solid rgba(150,150,150,1);
 	min-height: 100vh;
 	background-color: $light-gray;
+	overflow-x: hidden;
 }
 
 h1, h2, h3, h4 , h5, p, a, input, span, button {
@@ -74,7 +75,7 @@ h1 {
 	opacity: 0;
 	&.active {
 		opacity: 1;
-		z-index: 2;
+		z-index: 3;
 	}
 }
 
@@ -86,7 +87,7 @@ h1 {
 	opacity: 0;
 	&.active {
 		opacity: 1;
-		z-index: 3;	
+		z-index: 4;	
 	}
 }
 
@@ -164,6 +165,29 @@ div.header {
 		}
 	};
 };
+
+error {
+	.error-dialog {
+		background-color: $medium-gray;
+		color: #fff;
+		width: 15rem;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		@include prefixer(transform, translate(-150vw,-50%));
+		padding: 1.15rem 1rem;
+		transition: all ease-in 300ms;
+		opacity: 0;
+		z-index: 3;
+		&.active {
+			opacity: 1;
+			@include prefixer(transform, translate(-50%,-50%));
+		}
+		.error-message {
+			font-size: 0.85rem;
+		}
+	}
+}
 
 div.main {
 	div.event, .bet-wrapper {
@@ -288,9 +312,13 @@ div.main {
 			padding: 0;
 			padding-right: 2vw;
 		}
+		input.stake, .return {
+			float: right;
+		};
 		.return {
 			font-size: 0.65rem;
-			float: right;
+			width: 100%;
+			text-align: right;
 		}
 		input.stake {
 		    margin-left: auto;			
@@ -307,11 +335,6 @@ div.main {
 			}
 		}
 
-		&.disabled {
-			display: block;
-			@include prefixer(transform,translateY(100%));			
-		}
-
 	 	&.active {
 	 	@include prefixer(transition,all ease-in 300ms); 		
 	 		@include prefixer(transform,translateY(0));
@@ -324,9 +347,21 @@ div.main {
 				}
 			}
 	 	}
-	 	&:not(.active) {
-	 		@include prefixer(transition, all ease-in 300ms); 		
+
+	 	&.transition {
+	 		@include prefixer(transition, transform ease-in 300ms); 		 		
 	 	}
+
+
+		&.disabled {
+			@include prefixer(transition,none);
+			display: block;
+			@include prefixer(transform,translateY(100%));			
+		}
+
+	 	// &:not(.active) {
+	 	// 	@include prefixer(transition, transform ease-in 300ms); 		
+	 	// }
 
 		input.btn.place-bets {
 			display: block;
@@ -348,7 +383,7 @@ div.main {
 	slip {
 		position: fixed;
 		bottom: 0;
-		max-height: 27.5rem;
+		max-height: 100vh;
 		overflow-y: scroll;
 		overflow-x: hidden;	
 		z-index: 2;	
@@ -398,31 +433,7 @@ div.main {
 		span.stake {
 			float: right;
 		}
-	}
-
-	error {
-		.error-dialog {
-			background-color: $medium-gray;
-			color: #fff;
-			width: 15rem;
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			@include prefixer(transform, translate(-150vw,-50%));
-			padding: 1.15rem 1rem;
-			transition: all ease-in 300ms;
-			opacity: 0;
-			z-index: 3;
-			&.active {
-				opacity: 1;
-				@include prefixer(transform, translate(-50%,-50%));
-			}
-			.error-message {
-				font-size: 0.85rem;
-			}
-		}
 	}	
-
 }
 
 
@@ -497,17 +508,10 @@ input:checked + .slider:before {
 
 	html {
 		font-size: 3vh;	
-		.section {
-			&.header {
-				.bet-now-logo {
-					// width: 25vw;
-				}
-			}
-		}
+
 		div.main {
 			available-bets {
-				overflow-x: hidden;
-    			width: 100%;				
+				overflow-x: hidden;				
 			}
 			.slip {
 				input.btn.place-bets {

@@ -5,23 +5,24 @@ app.controller('SlipController',['$scope',
 	'apiResponses',
 	'$rootScope',
 	function($scope,$http,slip,placedBets,apiResponses,$rootScope) {
-		console.log("Slip Controller");
-		debugger;
 		$scope.slip = slip;
 		$scope.placedBets = placedBets;
 		$scope.responses = apiResponses;
 		$scope.slipActive = false;
+		const betSlip = document.querySelector('slip.slip-wrapper');	
 		$scope.toggleShowSlip = function() {
-			const betSlip = document.querySelector('slip.slip-wrapper');
 			betSlip.classList.toggle('active');
 		}
 		$scope.addResizeEventListener = function() {
-			window.addEventListener('resize',$rootScope.setInactiveSlipTransform);
+			window.addEventListener('resize',$rootScope.setInactiveSlipTransform);			
 		};
 		$rootScope.setInactiveSlipTransform = function() {
-				var betSlipHeader = document.querySelector('slip.slip-wrapper .slip-header-section');
-				var betSlipHeaderHeight = betSlipHeader.getBoundingClientRect().height;
+			if (betSlip) {
+				betSlip.classList.remove('transition');
+				var betSlipHeaderHeight = betSlip.querySelector('.slip-header-section').getBoundingClientRect().height;
 				document.documentElement.style.setProperty("--slipHeaderHeight",betSlipHeaderHeight+"px");
+				betSlip.classList.add('transition');
+			}
 		};			
 		$rootScope.setInactiveSlipTransform();
 		$scope.addResizeEventListener();		

@@ -11,7 +11,7 @@
 			<div class="slip-line-wrapper" ng-repeat="bet in slip.bets">
 				<div class="form-group row">				
 					<div class="bet-name-group col-md-10 col-xs-8">
-						<bet class="bet-wrapper" ng-click="addBet(event.name,bet)" name="{{bet.name}}" numerator="{{bet.odds.numerator}}" denominator="{{bet.odds.denominator}}"></bet>
+						<bet class="bet-wrapper" name="{{bet.name}}" numerator="{{bet.odds.numerator}}" denominator="{{bet.odds.denominator}}"></bet>
 						<span class="event-name">To win {{bet.event}}</span>
 					</div>
 					<div class="bet-stake-group col-md-2 col-xs-4">

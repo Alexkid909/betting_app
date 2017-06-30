@@ -4,7 +4,7 @@ app.controller('ErrorController',[
 	function($rootScope,$scope) {
 		$scope.errorMessage = "Error here";
 		$scope.errorContainer = document.querySelector('error .error-dialog');
-		$rootScope.displayMessage = function(message) {
+		$rootScope.displayMessage = function(message) {		
 			$scope.errorContainer.removeEventListener('transitionend',$scope.deactivateBackdrop);
 			$scope.errorMessage = message;
 			$rootScope.activateBackdrop();

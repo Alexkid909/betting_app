@@ -3,23 +3,23 @@ app.controller('MainController',[
 	'$scope',
 	function($rootScope,$scope) {
 		$rootScope.decimalOdds = {value:false};
-		$rootScope.switchOddsType = function() {
-			var decimalOdds = $scope.decimalOdds.value;
-			$scope.decimalOdds.value = !decimalOdds;
-		};
+		// $rootScope.switchOddsType = function() {
+		// 	var decimalOdds = $scope.decimalOdds.value;
+		// 	$scope.decimalOdds.value = !decimalOdds;
+		// };
 		$rootScope.activateLoader = function() {
 			const loader = document.querySelector('.loader-container');
 			loader.classList.add('active');
 			$rootScope.activateBackdrop();	
 		}
 		$rootScope.deactivateBackdrop = function() {
-				const backdrop = document.querySelector('div.backdrop');
-				backdrop.classList.remove('active');
+			const backdrop = document.querySelector('div.backdrop');
+			backdrop.classList.remove('active');
 		}
 		$rootScope.deactivateLoader = function() {
 			$rootScope.deactivateBackdrop();
-				const loader = document.querySelector('.loader-container');
-				loader.classList.remove('active');
+			const loader = document.querySelector('.loader-container');
+			loader.classList.remove('active');
 		}	
 		$rootScope.activateBackdrop = function() {
 			const backdrop = document.querySelector('div.backdrop');
