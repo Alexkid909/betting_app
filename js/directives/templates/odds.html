@@ -1,2 +1,1 @@
-<span ng-hide="decimalOdds.value" class="bet-odds">{{bet.odds.numerator}}/{{bet.odds.denominator}}</span>
-<span ng-show="decimalOdds.value" class="bet-odds">{{(bet.odds.numerator / bet.odds.denominator) + 1 | number:2}}</span>
+<span class="bet-odds" ng-bind="odds()"></span>
