@@ -8,7 +8,6 @@ app.directive('odds',function() {
 			denominator: '='
 		},
 		link: function(scope,element,attrs) {
-			debugger;
 			scope.odds = function() {
 				if (scope.decimalOdds) {
 					let decimalOdds = (scope.numerator / scope.denominator) + 1;
